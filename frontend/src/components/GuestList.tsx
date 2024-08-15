@@ -19,25 +19,31 @@ const GuestList = () => {
 
   return (
     <Grid container spacing={2}>
-      {guests.map(guest => (
-        <Grid item xs={12} sm={6} md={4} key={guest.id}>
-          <Card>
-            <CardContent>
-              <Typography variant="h6">{guest.author}</Typography>
-              <Typography variant="body2" color="textSecondary">
-                {guest.message}
-              </Typography>
-              {guest.image && (
-                <img
-                  src={`http://localhost:8001/${guest.image}`}
-                  alt="Guest Image"
-                  style={{ width: '100%', height: 'auto', marginTop: '10px' }}
-                />
-              )}
-            </CardContent>
-          </Card>
-        </Grid>
-      ))}
+      {guests.length === 0 ? (
+        <Typography variant="h6" color="textSecondary" align="center" style={{width: '100%'}}>
+          No guests available.
+        </Typography>
+      ) : (
+        guests.map(guest => (
+          <Grid item xs={12} sm={6} md={4} key={guest.id}>
+            <Card>
+              <CardContent>
+                <Typography variant="h6">{guest.author}</Typography>
+                <Typography variant="body2" color="textSecondary">
+                  {guest.message}
+                </Typography>
+                {guest.image && (
+                  <img
+                    src={`http://localhost:8001/${guest.image}`}
+                    alt="Guest Image"
+                    style={{width: '100%', height: 'auto', marginTop: '10px'}}
+                  />
+                )}
+              </CardContent>
+            </Card>
+          </Grid>
+        ))
+      )}
     </Grid>
   );
 };

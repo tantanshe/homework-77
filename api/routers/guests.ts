@@ -5,7 +5,7 @@ import {imagesUpload} from '../multer';
 
 const guestsRouter = express.Router();
 
-guestsRouter.get('/', async (req, res) => {
+guestsRouter.get('/', async (_req, res) => {
   const guests = await fileDb.getGuests();
   res.send(guests);
 });

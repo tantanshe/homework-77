@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useAppDispatch} from '../app/hooks';
 import {Button, TextField, Grid, Box} from '@mui/material';
 import FileInput from '../../UI/FileInput/FileInput';
-import {addGuest} from '../app/thunks.ts';
+import {addGuest, fetchGuests} from '../app/thunks.ts';
 
 const GuestForm: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -22,6 +22,7 @@ const GuestForm: React.FC = () => {
     if (state.image) formData.append('image', state.image);
 
     dispatch(addGuest(formData));
+    dispatch(fetchGuests());
     setState({
       author: '',
       message: '',

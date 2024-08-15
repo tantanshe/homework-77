@@ -6,7 +6,7 @@ export interface Guest {
   id: string;
   author: string;
   message: string;
-  image: File | null;
+  image: string | null;
 }
 
 interface GuestsState {
