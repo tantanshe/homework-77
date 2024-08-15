@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {useAppDispatch} from '../app/hooks';
-import {addGuest} from '../store/guestsSlice';
 import {Button, TextField, Grid, Box} from '@mui/material';
 import FileInput from '../../UI/FileInput/FileInput';
+import {addGuest} from '../app/thunks.ts';
 
 const GuestForm: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -17,7 +17,7 @@ const GuestForm: React.FC = () => {
     if (!state.message) return;
 
     const formData = new FormData();
-    formData.append('author', state.author);
+    formData.append('author', state.author || 'Anonymous');
     formData.append('message', state.message);
     if (state.image) formData.append('image', state.image);
 

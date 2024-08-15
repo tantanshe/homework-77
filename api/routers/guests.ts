@@ -15,12 +15,12 @@ guestsRouter.post('/', imagesUpload.single('image'), async (req, res) => {
     return res.status(400).send({'error': 'Message must be present in the request'});
   }
   const guest: Guest = {
-    author: req.body.author,
+    author: req.body.author || 'Anonymous',
     message: req.body.message,
     image: req.file ? req.file.filename : null,
   };
-  const savedMessage = await fileDb.addGuest(guest);
-  res.send(savedMessage);
+  const savedGuest = await fileDb.addGuest(guest);
+  res.send(savedGuest);
 });
 
 export default guestsRouter;

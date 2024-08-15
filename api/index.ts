@@ -4,9 +4,9 @@ import guestsRouter from './routers/guests';
 import cors, {CorsOptions} from 'cors';
 
 const app = express();
-const port = 8000;
+const port = 8001;
 
-const whitelist = ['http://localhost:8000', 'http://localhost:5173'];
+const whitelist = ['http://localhost:8001', 'http://localhost:5174'];
 const corsOptions: CorsOptions = {
   origin: (origin, callback) => {
     if (!origin || whitelist.indexOf(origin) !== -1) {
@@ -19,6 +19,7 @@ const corsOptions: CorsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use(express.static('public'));
 app.use('/guests', guestsRouter);
 
 const run = async () => {
