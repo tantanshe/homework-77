@@ -11,7 +11,7 @@ export const addGuest = createAsyncThunk<Guest, FormData>(
   'guests/addGuest',
   async (formData: FormData) => {
     const response = await axiosApi.post('/guests', formData, {
-      headers: { 'Content-Type': 'multipart/form-data' }
+      headers: {'Content-Type': 'multipart/form-data'}
     });
     return response.data as Guest;
   }

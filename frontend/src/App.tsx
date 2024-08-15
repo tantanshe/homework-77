@@ -1,5 +1,5 @@
 import './App.css';
-import {Container} from '@mui/material';
+import {Box, Container} from '@mui/material';
 import GuestForm from './components/GuestForm.tsx';
 import GuestList from './components/GuestList.tsx';
 
@@ -8,7 +8,9 @@ const App = () => {
   return (
     <Container>
       <GuestForm/>
-      <GuestList/>
+      <Box mt={4}>
+        <GuestList/>
+      </Box>
     </Container>
   );
 };
